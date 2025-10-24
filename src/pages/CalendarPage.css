@@ -1,0 +1,27 @@
+.calendar-page-content {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+ion-fab-button {
+  --background: var(--ion-color-primary);
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+ion-fab-button:hover {
+  --background: var(--ion-color-primary-shade);
+}
+
+/* Asegurar que el calendario ocupe toda la pantalla en móvil */
+@media (max-width: 768px) {
+  .calendar-page-content {
+    --padding-bottom: 0;
+  }
+
+  ion-fab {
+    margin: 0 16px 16px 0;
+  }
+}
+
