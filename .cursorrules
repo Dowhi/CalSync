@@ -1,0 +1,74 @@
+# CalSync - PWA Calendar Sync
+
+## Proyecto
+Calendario compartido PWA para gestión de turnos y eventos. Tech stack: React, Ionic, TypeScript, Firebase, Vite.
+
+## Estructura del Proyecto
+- `src/components/` - Componentes reutilizables
+- `src/pages/` - Pantallas/Vistas
+- `src/hooks/` - Custom React hooks
+- `src/services/` - Lógica de negocio y Firebase
+- `src/config/` - Configuración (Firebase, etc)
+- `src/types/` - TypeScript interfaces
+- `src/utils/` - Utilidades y constantes
+
+## Tecnologías
+- React 18+ con Hooks
+- Ionic React (UI components)
+- TypeScript
+- Vite (build tool)
+- Firebase Firestore (backend)
+- Firebase Authentication (removido)
+- Capacitor (para Android/iOS)
+
+## Convenciones de Código
+
+### Componentes React
+- Usa funciones de componente, no clases
+- Usa TypeScript para tipado
+- Props interfaces con prefijo `Props` o `Interface`
+- Organiza imports: externos → locales
+- Usa hooks personalizados para lógica compleja
+
+### Ionic Components
+- Usa componentes de Ionic para UI consistente
+- Aplica theme variables de Ionic (`--ion-color-*`)
+- Responsive design con breakpoints de Ionic
+- Usa `IonPage`, `IonContent`, `IonHeader` para estructura
+
+### Firebase
+- Firestore para persistencia
+- No usar Firebase Auth (removido)
+- Usar persistence offline
+- Real-time listeners con `onSnapshot`
+
+### Estilos
+- CSS modules o archivos `.css` separados
+- Usa CSS Variables de Ionic
+- Mobile-first approach
+- Usa variables de tema (`--ion-color-*`)
+
+### Estado
+- `useState` para estado local
+- `useAuth` hook para usuario actual
+- `useEvents` hook para eventos
+- Firebase listeners para datos en tiempo real
+
+## Características Principales
+- 5 usuarios predefinidos (sin autenticación)
+- CRUD de eventos
+- Calendario interactivo con FullCalendar
+- Sincronización en tiempo real
+- Offline-first (con Firestore persistence)
+- PWA instalable
+- Botones inferiores: Pintar, Editar, Turnos
+
+## Firebase Rules
+- Colección `events`: lectura/escritura libre (sin auth)
+- Colección `config`: para usuario actual seleccionado
+
+## Notas Importantes
+- NO hay autenticación de Firebase
+- Usuarios se seleccionan de lista fija
+- Base path: `/CalSync/` para GitHub Pages
+- Deploy automático con GitHub Actions
