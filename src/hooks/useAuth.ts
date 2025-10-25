@@ -17,16 +17,20 @@ export const useAuth = () => {
     // Cargar usuario desde localStorage
     const loadUser = () => {
       const storedUser = localStorage.getItem(STORAGE_KEY);
+      console.log('🔍 Leyendo localStorage, storedUser:', storedUser);
+      
       if (storedUser) {
         try {
           const user = JSON.parse(storedUser) as User;
+          console.log('✅ Usuario encontrado en localStorage:', user);
           setAuthState({
             user,
             isLoading: false,
             isAuthenticated: true
           });
         } catch (error) {
-          console.error('Error al cargar usuario:', error);
+          console.error('❌ Error al parsear usuario:', error);
+          localStorage.removeItem(STORAGE_KEY); // Limpiar datos corruptos
           setAuthState({
             user: null,
             isLoading: false,
@@ -34,6 +38,7 @@ export const useAuth = () => {
           });
         }
       } else {
+        console.log('ℹ️ No hay usuario guardado en localStorage');
         setAuthState({
           user: null,
           isLoading: false,
