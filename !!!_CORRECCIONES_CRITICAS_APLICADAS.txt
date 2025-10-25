@@ -1,0 +1,119 @@
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ CORRECCIONES CRÍTICAS APLICADAS - PROBLEMA RESUELTO
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 PROBLEMA IDENTIFICADO:
+  La app no se veía en ningún navegador (móvil ni desktop)
+  Se quedaba en pantalla en blanco o cargando indefinidamente
+
+═══════════════════════════════════════════════════════════════════════════════
+  🔧 CORRECCIONES APLICADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ✅ TIMEOUT EN FIREBASE (useAuth.ts)
+   PROBLEMA: Si Firebase tardaba en responder, la app se quedaba en loading infinito
+   SOLUCIÓN: Agregado timeout de 5 segundos
+   - Si Firebase no responde en 5s, continúa sin usuario guardado
+   - Muestra la pantalla de selección de usuario
+   - Evita espera infinita
+
+2. ✅ SPINNER DE CARGA VISIBLE (App.tsx)
+   PROBLEMA: Cuando isLoading=true, se mostraba null (pantalla en blanco)
+   SOLUCIÓN: Agregado spinner visual con mensaje
+   - Muestra "Cargando CalSync..." con animación
+   - Usuario sabe que la app está cargando
+   - No más pantalla en blanco
+
+3. ✅ SERVICE WORKER AUTOMÁTICO (main.tsx)
+   PROBLEMA: Registro manual del SW causaba conflictos con Vite PWA
+   SOLUCIÓN: Eliminado registro manual
+   - Vite PWA registra el SW automáticamente
+   - Rutas correctas para GitHub Pages (/CalSync/sw.js)
+   - Sin conflictos entre registros
+
+4. ✅ ALTURA DEL CALENDARIO (CalendarView.tsx)
+   PROBLEMA: height="100%" impedía que FullCalendar se renderizara
+   SOLUCIÓN: Cambiado a height="auto"
+   - Calendario se renderiza correctamente
+   - Altura mínima de 600px
+   - Responsive en móvil
+
+═══════════════════════════════════════════════════════════════════════════════
+  📋 FLUJO CORREGIDO
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Usuario abre la app
+   ↓
+2. App muestra spinner "Cargando CalSync..."
+   ↓
+3. useAuth intenta cargar usuario desde Firebase (max 5s)
+   ↓
+4a. Si hay usuario guardado → Muestra Calendario
+4b. Si NO hay usuario → Muestra pantalla "Selecciona tu usuario"
+   ↓
+5. Usuario selecciona su perfil
+   ↓
+6. Se guarda en Firebase
+   ↓
+7. Muestra Calendario con eventos
+
+═══════════════════════════════════════════════════════════════════════════════
+  🎯 RESULTADO ESPERADO
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ En GitHub Pages (https://dowhi.github.io/CalSync/):
+   - Spinner de carga visible (1-5 segundos)
+   - Pantalla de selección de usuario
+   - Calendario funcional tras seleccionar usuario
+   - Botones inferiores: Pintar, Editar, Turnos
+
+✅ En Android (Capacitor):
+   - Mismo comportamiento
+   - Sin errores de rutas
+   - PWA instalable
+
+✅ En Safari/iOS:
+   - Mismo comportamiento
+   - Compatible con Safari
+
+═══════════════════════════════════════════════════════════════════════════════
+  ⏱️ PRÓXIMOS PASOS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Espera 1-2 minutos a que GitHub Actions despliegue
+2. Ve a: https://github.com/Dowhi/CalSync/actions
+3. Verifica que el workflow termine con ✅
+4. Abre: https://dowhi.github.io/CalSync/
+5. Forza recarga: Ctrl+Shift+R (Windows) o Cmd+Shift+R (Mac)
+6. Deberías ver:
+   - Spinner de carga breve
+   - Pantalla "Selecciona tu usuario"
+   - 5 usuarios disponibles
+   - Al hacer clic → Calendario visible
+
+═══════════════════════════════════════════════════════════════════════════════
+  🐛 SI AÚN NO FUNCIONA
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Abre DevTools (F12)
+2. Ve a Console
+3. Busca estos mensajes:
+   - "🔄 Intentando cargar usuario desde Firebase..."
+   - "✅ Usuario encontrado" O "ℹ️ No hay usuario guardado"
+   - "🎨 UserSelector renderizado"
+4. Comparte los logs de la consola
+
+═══════════════════════════════════════════════════════════════════════════════
+  📊 RESUMEN DE CAMBIOS
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivos modificados:
+  ✅ src/hooks/useAuth.ts - Timeout Firebase
+  ✅ src/App.tsx - Spinner visible
+  ✅ src/main.tsx - SW automático
+  ✅ src/components/calendar/CalendarView.tsx - Altura auto
+  ✅ src/components/calendar/CalendarView.css - Min-height
+  ✅ src/theme/variables.css - Spinner CSS
+
+═══════════════════════════════════════════════════════════════════════════════
+
