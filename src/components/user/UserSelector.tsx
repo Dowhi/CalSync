@@ -22,8 +22,13 @@ interface UserSelectorProps {
 
 export const UserSelector: React.FC<UserSelectorProps> = ({ onSelectUser }) => {
   const handleUserSelect = (user: User) => {
+    console.log('👤 Click en usuario:', user.displayName);
     onSelectUser(user);
+    console.log('📤 onSelectUser ejecutado');
   };
+
+  console.log('🎨 UserSelector renderizado');
+  console.log('📋 Usuarios disponibles:', PREDEFINED_USERS.length);
 
   return (
     <IonPage>

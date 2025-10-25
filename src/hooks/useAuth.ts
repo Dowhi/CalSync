@@ -46,12 +46,19 @@ export const useAuth = () => {
   }, []);
 
   const selectUser = (user: User) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-    setAuthState({
-      user,
-      isLoading: false,
-      isAuthenticated: true
-    });
+    console.log('🔵 Seleccionando usuario:', user);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+      console.log('✅ Usuario guardado en localStorage');
+      setAuthState({
+        user,
+        isLoading: false,
+        isAuthenticated: true
+      });
+      console.log('✅ Estado actualizado, isAuthenticated:', true);
+    } catch (error) {
+      console.error('❌ Error al seleccionar usuario:', error);
+    }
   };
 
   const changeUser = () => {

@@ -33,11 +33,15 @@ setupIonicReact();
 const App: React.FC = () => {
   const { isAuthenticated, isLoading, selectUser } = useAuth();
 
+  console.log('🚀 App renderizado - isAuthenticated:', isAuthenticated, 'isLoading:', isLoading);
+
   if (isLoading) {
+    console.log('⏳ Mostrando loading...');
     return null; // O un componente de loading
   }
 
   if (!isAuthenticated) {
+    console.log('🔓 No autenticado - Mostrando UserSelector');
     return (
       <IonApp>
         <UserSelector onSelectUser={selectUser} />
@@ -45,6 +49,7 @@ const App: React.FC = () => {
     );
   }
 
+  console.log('✅ Autenticado - Mostrando Calendario');
   return (
     <IonApp>
       <IonReactRouter>
