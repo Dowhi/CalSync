@@ -16,12 +16,21 @@ export const useAuth = () => {
   });
 
   useEffect(() => {
-    // Cargar usuario desde Firebase
+    // Cargar usuario desde Firebase con timeout
     const loadUser = async () => {
       try {
-        const userDoc = await getDoc(doc(db, 'config', CURRENT_USER_KEY));
+        console.log('🔄 Intentando cargar usuario desde Firebase...');
         
-        if (userDoc.exists()) {
+        // Timeout de 5 segundos para evitar espera infinita
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout')), 5000)
+        );
+        
+        const userDocPromise = getDoc(doc(db, 'config', CURRENT_USER_KEY));
+        
+        const userDoc = await Promise.race([userDocPromise, timeoutPromise]) as any;
+        
+        if (userDoc.exists && userDoc.exists()) {
           const userData = userDoc.data() as User;
           console.log('✅ Usuario encontrado en Firebase:', userData);
           setAuthState({
@@ -39,6 +48,7 @@ export const useAuth = () => {
         }
       } catch (error) {
         console.error('❌ Error al cargar usuario desde Firebase:', error);
+        console.log('⚠️ Continuando sin usuario guardado');
         setAuthState({
           user: null,
           isLoading: false,

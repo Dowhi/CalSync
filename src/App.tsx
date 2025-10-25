@@ -37,7 +37,21 @@ const App: React.FC = () => {
 
   if (isLoading) {
     console.log('⏳ Mostrando loading...');
-    return null; // O un componente de loading
+    return (
+      <IonApp>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh',
+          flexDirection: 'column',
+          gap: '1rem'
+        }}>
+          <div className="spinner"></div>
+          <p>Cargando CalSync...</p>
+        </div>
+      </IonApp>
+    );
   }
 
   if (!isAuthenticated) {
