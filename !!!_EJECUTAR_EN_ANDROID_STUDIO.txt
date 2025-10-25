@@ -1,0 +1,85 @@
+═══════════════════════════════════════════════════════════════════════════════
+  📱 CÓMO EJECUTAR CALSYNC EN ANDROID STUDIO
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 Tienes 2 opciones para probar CalSync en Android:
+
+═══════════════════════════════════════════════════════════════════════════════
+  OPCIÓN 1: ANDROID STUDIO (Nativo)
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 1: Abre Android Studio
+
+✅ PASO 2: En la terminal (PowerShell), ejecuta:
+
+   npm run android
+
+   Este comando hará:
+   1. Compilar la app
+   2. Sincronizar con Capacitor
+   3. Abrir Android Studio automáticamente
+
+✅ PASO 3: En Android Studio:
+   - Espera a que cargue el proyecto
+   - Selecciona un emulador Android o conecta un dispositivo físico
+   - Clic en el botón verde "▶ Run" (Play)
+
+✅ PASO 4: La app se abrirá en el emulador/dispositivo
+
+═══════════════════════════════════════════════════════════════════════════════
+  OPCIÓN 2: PROBAR EN NAVEGADOR (Más fácil para desarrollo)
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PASO 1: En la terminal, ejecuta:
+
+   npm run dev
+
+✅ PASO 2: Abre tu navegador en:
+
+   http://localhost:3000
+
+✅ PASO 3: Abre DevTools (F12) y prueba en modo móvil:
+   - Clic en el ícono de dispositivo móvil (Ctrl + Shift + M)
+   - Selecciona un dispositivo Android (ej: Pixel 5)
+
+═══════════════════════════════════════════════════════════════════════════════
+  🐛 SI ANDROID STUDIO DICE "ANDROID FOLDER NOT FOUND"
+═══════════════════════════════════════════════════════════════════════════════
+
+Ejecuta estos comandos en orden:
+
+   npx cap add android
+   npm run build
+   npx cap sync android
+   npx cap open android
+
+═══════════════════════════════════════════════════════════════════════════════
+  🧹 LIMPIAR LOCALSTORAGE EN NAVEGADOR
+═══════════════════════════════════════════════════════════════════════════════
+
+📍 DONDE EJECUTAR localStorage.clear():
+
+1. Abre tu navegador (Chrome/Firefox)
+2. Ve a: https://dowhi.github.io/CalSync/
+3. Presiona F12 (abre DevTools)
+4. Ve a la pestaña "Console"
+5. Abajo verás un símbolo: >
+6. Pega esto y presiona Enter:
+
+   localStorage.clear()
+   console.log('✅ localStorage limpiado')
+
+7. Refresca con Ctrl + Shift + R
+
+═══════════════════════════════════════════════════════════════════════════════
+  📋 COMANDOS ÚTILES
+═══════════════════════════════════════════════════════════════════════════════
+
+npm run dev          → Desarrollo en navegador (http://localhost:3000)
+npm run build        → Compilar para producción
+npm run android      → Compilar + Abrir Android Studio
+npm run sync         → Sincronizar cambios con Capacitor
+npm run preview      → Previsualizar versión de producción
+
+═══════════════════════════════════════════════════════════════════════════════
+

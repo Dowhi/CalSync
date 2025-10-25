@@ -7,7 +7,6 @@ Aplicación Web Progresiva (PWA) para gestión de turnos y eventos compartidos e
 - ✅ **PWA Multiplataforma**: Compatible con Android, iOS y escritorio
 - ✅ **Sincronización en Tiempo Real**: Cambios instantáneos entre todos los usuarios
 - ✅ **Modo Offline**: Funciona sin conexión a internet
-- ✅ **Autenticación Segura**: Login con email/contraseña y Google
 - ✅ **Calendario Interactivo**: Vistas por mes, semana y agenda
 - ✅ **Gestión de Eventos**: CRUD completo de eventos con categorías
 - ✅ **Diseño Responsive**: Optimizado para todos los tamaños de pantalla
