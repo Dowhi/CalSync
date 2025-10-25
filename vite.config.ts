@@ -18,8 +18,8 @@ export default defineConfig({
         theme_color: '#3880ff',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/CalSync/',
+        start_url: '/CalSync/',
         orientation: 'portrait-primary',
         icons: [
           {
