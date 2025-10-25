@@ -4,8 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/CalSync/' : '/',
+export default defineConfig({
+  base: '/',
   plugins: [
     react(),
     VitePWA({
@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       strategies: 'generateSW',
       registerOptions: {
-        scope: '/CalSync/',
+        scope: '/',
       },
       manifest: {
         name: 'CalSync - Calendario Compartido',
@@ -22,22 +22,22 @@ export default defineConfig(({ mode }) => ({
         theme_color: '#3880ff',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/CalSync/',
-        start_url: '/CalSync/',
+        scope: '/',
+        start_url: '/',
         orientation: 'portrait-primary',
         icons: [
           {
-            src: '/CalSync/pwa-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/CalSync/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/CalSync/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -77,5 +77,5 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
     strictPort: true
   }
-}));
+});
 
