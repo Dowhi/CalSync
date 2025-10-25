@@ -1,6 +1,6 @@
 .calendar-page-content {
   --padding-top: 0;
-  --padding-bottom: 0;
+  --padding-bottom: 70px; /* Espacio para la barra de navegación inferior */
   --padding-start: 0;
   --padding-end: 0;
 }

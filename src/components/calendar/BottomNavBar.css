@@ -1,0 +1,40 @@
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ion-background-color);
+  border-top: 1px solid var(--ion-color-step-150);
+  padding: 8px;
+  z-index: 10;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.bottom-nav-bar ion-buttons {
+  display: flex;
+  width: 100%;
+  gap: 0;
+}
+
+.bottom-nav-bar .nav-button {
+  flex: 1;
+  height: 44px;
+  margin: 0;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.bottom-nav-bar .nav-button:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.bottom-nav-bar .nav-button:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+

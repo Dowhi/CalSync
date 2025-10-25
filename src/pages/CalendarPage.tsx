@@ -16,6 +16,7 @@ import {
 import { add } from 'ionicons/icons';
 import { CalendarView } from '@/components/calendar/CalendarView';
 import { EventModal } from '@/components/calendar/EventModal';
+import { BottomNavBar } from '@/components/calendar/BottomNavBar';
 import { useAuth } from '@/hooks/useAuth';
 import { useEvents } from '@/hooks/useEvents';
 import { CalendarEvent, EventFormData } from '@/types';
@@ -137,6 +138,12 @@ export const CalendarPage: React.FC = () => {
           duration={2000}
           position="bottom"
           color={error ? 'danger' : 'success'}
+        />
+
+        <BottomNavBar
+          onPintar={() => console.log('Pintar clicked')}
+          onEditar={() => console.log('Editar clicked')}
+          onTurnos={() => console.log('Turnos clicked')}
         />
       </IonContent>
     </IonPage>
