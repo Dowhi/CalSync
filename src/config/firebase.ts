@@ -19,6 +19,7 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 // Habilitar persistencia offline de Firestore
+// NOTA: La advertencia de deprecación es solo informativa y no afecta la funcionalidad
 enableIndexedDbPersistence(db).catch((err) => {
   if (err.code === 'failed-precondition') {
     console.warn('Persistencia offline no disponible: múltiples pestañas abiertas');

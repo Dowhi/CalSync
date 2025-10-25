@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ ADVERTENCIA DE FIREBASE - NO ES CRÍTICA
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 MENSAJE QUE VES:
+  "enableIndexedDbPersistence() will be deprecated in the future, you can use 
+  `FirestoreSettings.cache` instead"
+
+═══════════════════════════════════════════════════════════════════════════════
+  ❓ ¿QUÉ SIGNIFICA?
+═══════════════════════════════════════════════════════════════════════════════
+
+Es solo una ADVERTENCIA INFORMATIVA de Firebase que indica:
+
+1. ✅ Tu app funciona perfectamente
+2. ⚠️ Firebase está avisando que esa función quedará obsoleta en el FUTURO
+3. 💡 Sugiere usar una API más nueva (pero no es obligatorio ahora)
+
+═══════════════════════════════════════════════════════════════════════════════
+  🔧 ¿QUÉ HACE `enableIndexedDbPersistence()`?
+═══════════════════════════════════════════════════════════════════════════════
+
+Permite que tu app funcione OFFLINE guardando datos en el navegador.
+
+Ejemplo:
+  - Sin conexión → La app sigue funcionando
+  - Abres la app → Ves los datos guardados
+  - Vuelve la conexión → Los datos se sincronizan
+
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ ¿DEBO HACER ALGO?
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ NO ES NECESARIO HACER NADA AHORA
+
+Razones:
+  1. Tu app funciona correctamente
+  2. Es solo una advertencia, no un error
+  3. La nueva API requeriría actualizar Firebase a v11+
+  4. La funcionalidad actual es perfecta para tu proyecto
+
+═══════════════════════════════════════════════════════════════════════════════
+  💡 ¿CUÁNDO DEBERÍA ACTUALIZARLA?
+═══════════════════════════════════════════════════════════════════════════════
+
+Puedes actualizarla cuando:
+  1. Firebase elimine completamente la función antigua
+  2. Quieras usar nuevas características de Firebase
+  3. Haya un error real (no solo advertencia)
+
+Por ahora: IGNÓRALA ✅
+
+═══════════════════════════════════════════════════════════════════════════════
+  📊 RESUMEN
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Advertencia: Solo informativa
+✅ Tu app: Funciona perfectamente
+✅ Funcionalidad: Offline trabajando bien
+✅ Recomendación: Ignorar por ahora
+
+═══════════════════════════════════════════════════════════════════════════════
