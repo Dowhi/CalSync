@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { User, AuthState } from '@/types';
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '@/config/firebase';
 
-const STORAGE_KEY = 'calsync_current_user';
+const CURRENT_USER_KEY = 'current_selected_user';
 
 /**
- * Hook personalizado para gestión de usuarios (sin autenticación Firebase)
+ * Hook personalizado para gestión de usuarios usando Firebase
  */
 export const useAuth = () => {
   const [authState, setAuthState] = useState<AuthState>({
@@ -14,31 +16,29 @@ export const useAuth = () => {
   });
 
   useEffect(() => {
-    // Cargar usuario desde localStorage
-    const loadUser = () => {
-      const storedUser = localStorage.getItem(STORAGE_KEY);
-      console.log('🔍 Leyendo localStorage, storedUser:', storedUser);
-      
-      if (storedUser) {
-        try {
-          const user = JSON.parse(storedUser) as User;
-          console.log('✅ Usuario encontrado en localStorage:', user);
+    // Cargar usuario desde Firebase
+    const loadUser = async () => {
+      try {
+        const userDoc = await getDoc(doc(db, 'config', CURRENT_USER_KEY));
+        
+        if (userDoc.exists()) {
+          const userData = userDoc.data() as User;
+          console.log('✅ Usuario encontrado en Firebase:', userData);
           setAuthState({
-            user,
+            user: userData,
             isLoading: false,
             isAuthenticated: true
           });
-        } catch (error) {
-          console.error('❌ Error al parsear usuario:', error);
-          localStorage.removeItem(STORAGE_KEY); // Limpiar datos corruptos
+        } else {
+          console.log('ℹ️ No hay usuario guardado en Firebase');
           setAuthState({
             user: null,
             isLoading: false,
             isAuthenticated: false
           });
         }
-      } else {
-        console.log('ℹ️ No hay usuario guardado en localStorage');
+      } catch (error) {
+        console.error('❌ Error al cargar usuario desde Firebase:', error);
         setAuthState({
           user: null,
           isLoading: false,
@@ -50,11 +50,11 @@ export const useAuth = () => {
     loadUser();
   }, []);
 
-  const selectUser = (user: User) => {
+  const selectUser = async (user: User) => {
     console.log('🔵 Seleccionando usuario:', user);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-      console.log('✅ Usuario guardado en localStorage');
+      await setDoc(doc(db, 'config', CURRENT_USER_KEY), user);
+      console.log('✅ Usuario guardado en Firebase');
       setAuthState({
         user,
         isLoading: false,
@@ -66,13 +66,17 @@ export const useAuth = () => {
     }
   };
 
-  const changeUser = () => {
-    localStorage.removeItem(STORAGE_KEY);
-    setAuthState({
-      user: null,
-      isLoading: false,
-      isAuthenticated: false
-    });
+  const changeUser = async () => {
+    try {
+      await deleteDoc(doc(db, 'config', CURRENT_USER_KEY));
+      setAuthState({
+        user: null,
+        isLoading: false,
+        isAuthenticated: false
+      });
+    } catch (error) {
+      console.error('❌ Error al cambiar usuario:', error);
+    }
   };
 
   return {

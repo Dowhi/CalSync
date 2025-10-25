@@ -17,5 +17,11 @@ service cloud.firestore {
       // Permitir eliminación solo al propietario del evento
       allow delete: if true;
     }
+    
+    // Colección de configuración para usuario actual
+    match /config/{document} {
+      allow read: if true;
+      allow write: if true;
+    }
   }
 }
