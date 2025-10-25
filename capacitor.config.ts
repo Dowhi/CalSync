@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'CalSync',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    cleartext: true
   },
   plugins: {
     SplashScreen: {
