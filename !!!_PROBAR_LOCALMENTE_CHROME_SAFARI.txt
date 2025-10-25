@@ -1,0 +1,79 @@
+═══════════════════════════════════════════════════════════════════════════════
+  🔧 CÓMO PROBAR LA APP EN CHROME Y SAFARI
+═══════════════════════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ OPCIÓN 1: EJECUTAR EN LOCAL (RECOMENDADO PARA DESARROLLO)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Abre una terminal en la carpeta del proyecto
+
+2. Ejecuta el servidor de desarrollo:
+   npm run dev
+
+3. Abre tu navegador en:
+   ✅ Chrome: http://localhost:3000
+   ✅ Safari: http://localhost:3000
+
+4. ¡Listo! Deberías ver la app funcionando
+
+═══════════════════════════════════════════════════════════════════════════════
+  🌐 OPCIÓN 2: PROBAR EN GITHUB PAGES (PRODUCCIÓN)
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Ve a: https://github.com/Dowhi/CalSync/actions
+
+2. Verifica que el último workflow haya completado con ✅
+
+3. Si hay errores:
+   - Haz click en el workflow fallido
+   - Revisa los logs para ver qué falló
+   - Ejecuta: git pull (para obtener los últimos cambios)
+
+4. Espera 1-2 minutos y visita:
+   ✅ Chrome: https://dowhi.github.io/CalSync/
+   ✅ Safari: https://dowhi.github.io/CalSync/
+
+5. Si no carga:
+   - Presiona Ctrl+Shift+R (Chrome) o Cmd+Shift+R (Safari) para limpiar caché
+   - Abre las DevTools (F12) y revisa la consola para errores
+
+═══════════════════════════════════════════════════════════════════════════════
+  🔍 VERIFICAR QUE TODO FUNCIONA
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ✅ Deberías ver la pantalla de selección de usuario
+2. ✅ Deberías ver los 3 botones inferiores (Pintar, Editar, Turnos)
+3. ✅ Al seleccionar un usuario, deberías ver el calendario
+4. ✅ Deberías poder hacer clic en fechas y crear eventos
+
+═══════════════════════════════════════════════════════════════════════════════
+  ⚠️ PROBLEMAS COMUNES
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ PROBLEMA: Página en blanco en Chrome/Safari
+   ✅ SOLUCIÓN: 
+   1. Abre DevTools (F12)
+   2. Ve a la pestaña "Console"
+   3. Busca errores en rojo
+   4. Comparte los errores para que pueda ayudarte
+
+❌ PROBLEMA: "404 Not Found" en GitHub Pages
+   ✅ SOLUCIÓN:
+   1. Verifica que GitHub Actions haya completado: https://github.com/Dowhi/CalSync/actions
+   2. Espera 1-2 minutos más
+   3. Haz hard refresh: Ctrl+Shift+R
+
+❌ PROBLEMA: No se ven los cambios recientes
+   ✅ SOLUCIÓN:
+   1. Limpia el caché del navegador
+   2. O ejecuta localmente: npm run dev
+
+═══════════════════════════════════════════════════════════════════════════════
+  💡 NOTA IMPORTANTE
+═══════════════════════════════════════════════════════════════════════════════
+
+Para desarrollo: Usa npm run dev (más rápido, recarga automática)
+Para producción: Espera a que GitHub Pages despliegue (1-2 minutos)
+
+═══════════════════════════════════════════════════════════════════════════════
