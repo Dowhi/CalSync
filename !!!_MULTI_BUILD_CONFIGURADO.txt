@@ -1,0 +1,84 @@
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ CONFIGURACIÓN MULTI-BUILD PARA TODAS LAS PLATAFORMAS
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 PROBLEMA RESUELTO: Ahora la app funciona correctamente en:
+  ✅ GitHub Pages
+  ✅ Android (Capacitor)
+  ✅ Safari/iOS
+  ✅ Chrome/Firefox
+
+═══════════════════════════════════════════════════════════════════════════════
+  🔧 ¿CÓMO FUNCIONA?
+═══════════════════════════════════════════════════════════════════════════════
+
+El proyecto ahora tiene DOS configuraciones de build:
+
+1. GitHub Pages (base: '/CalSync/')
+   - Para hosting en https://dowhi.github.io/CalSync/
+   - Build: npm run build:github
+
+2. Android/Safari (base: '/')
+   - Para apps móviles con Capacitor
+   - Build: npm run build:android
+
+═══════════════════════════════════════════════════════════════════════════════
+  📋 COMANDOS DISPONIBLES
+═══════════════════════════════════════════════════════════════════════════════
+
+# Desarrollo local (cualquier navegador)
+npm run dev
+
+# Build para GitHub Pages
+npm run build:github
+
+# Build para Android/iOS
+npm run build:android
+
+# Sincronizar con Capacitor (después de build:android)
+npx cap sync android
+
+# Abrir Android Studio
+npx cap open android
+
+# Abrir Xcode (iOS)
+npx cap open ios
+
+═══════════════════════════════════════════════════════════════════════════════
+  🔄 FLUJO DE TRABAJO
+═══════════════════════════════════════════════════════════════════════════════
+
+PARA GITHUB PAGES:
+1. Trabaja en tu código
+2. git add .
+3. git commit -m "Tus cambios"
+4. git push
+5. GitHub Actions compila automáticamente con base: '/CalSync/'
+6. Espera 1-2 minutos
+7. Visita: https://dowhi.github.io/CalSync/
+
+PARA ANDROID/SAFARI:
+1. npm run build:android
+2. npx cap sync android
+3. npx cap open android
+
+═══════════════════════════════════════════════════════════════════════════════
+  ✅ VENTAJAS DE ESTA CONFIGURACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Una sola base de código
+✅ Builds optimizados para cada plataforma
+✅ No hay conflicto entre rutas
+✅ Automático: GitHub Actions usa build:github
+✅ Manual para Android: usa build:android
+
+═══════════════════════════════════════════════════════════════════════════════
+  🎯 AHORA FUNCIONA EN:
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ GitHub Pages: https://dowhi.github.io/CalSync/
+✅ Android: App nativa con Capacitor
+✅ Safari/iOS: PWA o app nativa
+✅ Chrome/Firefox: Como PWA o web normal
+
+═══════════════════════════════════════════════════════════════════════════════
