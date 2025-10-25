@@ -4,8 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/CalSync/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/CalSync/' : '/',
   plugins: [
     react(),
     VitePWA({
@@ -77,5 +77,5 @@ export default defineConfig({
     port: 3000,
     strictPort: true
   }
-});
+}));
 
