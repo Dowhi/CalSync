@@ -1,11 +1,15 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/CalSync/',
+export default defineConfig(({ mode }) => {
+  // Determinar el base path según el modo
+  const basePath = mode === 'github' ? '/CalSync/' : '/';
+  
+  return {
+    base: basePath,
   plugins: [
     react(),
     VitePWA({
@@ -13,7 +17,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       strategies: 'generateSW',
       workbox: {
-        navigateFallback: '/CalSync/index.html',
+        navigateFallback: `${basePath}index.html`,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -35,7 +39,7 @@ export default defineConfig({
       injectionPoint: undefined,
       injectRegister: 'auto',
       registerOptions: {
-        scope: '/CalSync/',
+        scope: basePath,
         type: 'autoUpdate'
       },
       manifest: {
@@ -45,22 +49,22 @@ export default defineConfig({
         theme_color: '#3880ff',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/CalSync/',
-        start_url: '/CalSync/',
+        scope: basePath,
+        start_url: basePath,
         orientation: 'portrait-primary',
         icons: [
           {
-            src: '/CalSync/pwa-192x192.png',
+            src: `${basePath}pwa-192x192.png`,
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/CalSync/pwa-512x512.png',
+            src: `${basePath}pwa-512x512.png`,
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/CalSync/pwa-512x512.png',
+            src: `${basePath}pwa-512x512.png`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -77,9 +81,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-  server: {
-    port: 3000,
-    strictPort: true
-  }
+    server: {
+      port: 3000,
+      strictPort: true
+    }
+  };
 });
-
