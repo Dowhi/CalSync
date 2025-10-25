@@ -5,7 +5,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/CalSync/',
   plugins: [
     react(),
     VitePWA({
@@ -13,7 +13,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       strategies: 'generateSW',
       workbox: {
-        navigateFallback: '/index.html',
+        navigateFallback: '/CalSync/index.html',
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -35,7 +35,7 @@ export default defineConfig({
       injectionPoint: undefined,
       injectRegister: 'auto',
       registerOptions: {
-        scope: '/',
+        scope: '/CalSync/',
         type: 'autoUpdate'
       },
       manifest: {
@@ -45,22 +45,22 @@ export default defineConfig({
         theme_color: '#3880ff',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/CalSync/',
+        start_url: '/CalSync/',
         orientation: 'portrait-primary',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: '/CalSync/pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/CalSync/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/CalSync/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
