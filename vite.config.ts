@@ -32,8 +32,11 @@ export default defineConfig({
           }
         ]
       },
+      injectionPoint: undefined,
+      injectRegister: 'auto',
       registerOptions: {
         scope: '/CalSync/',
+        type: 'autoUpdate'
       },
       manifest: {
         name: 'CalSync - Calendario Compartido',
