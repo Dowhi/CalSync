@@ -105,16 +105,13 @@ export const CalendarPage: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen className="calendar-page-content">
-        {isLoading ? (
-          <IonLoading isOpen={isLoading} message="Cargando eventos..." />
-        ) : (
-          <CalendarView
-            events={events}
-            currentUserId={user?.uid || ''}
-            onEventClick={handleEventClick}
-            onDateSelect={handleDateSelect}
-          />
-        )}
+        <IonLoading isOpen={isLoading} message="Cargando eventos..." />
+        <CalendarView
+          events={events}
+          currentUserId={user?.uid || ''}
+          onEventClick={handleEventClick}
+          onDateSelect={handleDateSelect}
+        />
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton onClick={handleNewEvent}>

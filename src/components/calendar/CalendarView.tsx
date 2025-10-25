@@ -81,7 +81,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,listWeek'
+          right: ''
         }}
         locale={esLocale}
         firstDay={CALENDAR_CONFIG.firstDay}
