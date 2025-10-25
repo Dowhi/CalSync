@@ -1,0 +1,13 @@
+{
+  "name": "auth",
+  "description": "Manejo de usuarios predefinidos sin autenticación real.",
+  "rules": [
+    "NO implementar Firebase Auth ni sistemas de login.",
+    "Definir usuarios en src/utils/constants.ts con id, name, displayName, avatar.",
+    "Usar useAuth hook para estado del usuario actual.",
+    "Persistir usuario seleccionado en Firestore (colección 'config').",
+    "Validar que el usuario existe antes de operaciones.",
+    "Exportar useAuth() hook para acceder al usuario activo.",
+    "Tipos: User { uid: string; displayName: string; photoURL?: string }"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pwa",
+  "description": "Reglas para configurar PWA con Vite y Workbox.",
+  "rules": [
+    "Usa vite-plugin-pwa para generar service worker.",
+    "Configurar manifest.json con name, short_name, icons (192x192, 512x512).",
+    "Estrategia de caché: NetworkFirst para Firebase, CacheFirst para assets.",
+    "Precache: index.html, CSS, JS principales con Workbox.",
+    "Soportar instalación: detección automática de PWA instalable.",
+    "Actualización: usar registerType: 'autoUpdate'.",
+    "Offline fallback: página custom para sin conexión.",
+    "Testing: usar Lighthouse para auditoría PWA (score > 90).",
+    "Icons: generar con pwa-asset-generator.",
+    "Meta tags: theme-color, apple-touch-icon.",
+    "Base path: '/CalSync/' para GitHub Pages."
+  ]
+}

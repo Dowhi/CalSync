@@ -1,0 +1,15 @@
+{
+  "name": "core",
+  "description": "Reglas generales para código base, modelos, utilidades y arquitectura.",
+  "rules": [
+    "Usa TypeScript estricto (strict: true en tsconfig.json).",
+    "Define tipos en src/types/ con interfaces (no classes).",
+    "Centraliza errores con manejo de try/catch.",
+    "Usa funciones puras y custom hooks para lógica reutilizable.",
+    "Organiza utilidades en src/utils/.",
+    "Centraliza constantes en src/utils/constants.ts (users, colors, config).",
+    "Evita lógica duplicada entre componentes.",
+    "Usa ESLint + Prettier para consistencia de código.",
+    "Estructura: src/components/, src/pages/, src/services/, src/hooks/, src/types/, src/utils/"
+  ]
+}

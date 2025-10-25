@@ -1,0 +1,16 @@
+{
+  "name": "firebase",
+  "description": "Reglas para integrar Firebase en React/Ionic con TypeScript.",
+  "rules": [
+    "Usa Firebase v10+ (modular SDK).",
+    "Inicializa Firebase en src/config/firebase.ts exportando db, app.",
+    "Divide lógica en services/: eventService.ts.",
+    "Estructura Firestore: colecciones 'events', 'config'.",
+    "Implementa listeners en tiempo real con onSnapshot.",
+    "Configura reglas de seguridad públicas: allow read, write: if true;",
+    "Usa Timestamp de Firebase para fechas.",
+    "Evita exponer API keys: usa archivo firebase.prod.ts para producción.",
+    "Tipos: CalendarEvent definido en src/types/index.ts",
+    "Persistencia offline: enableIndexedDbPersistence(db)."
+  ]
+}

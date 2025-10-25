@@ -1,0 +1,17 @@
+{
+  "name": "ui",
+  "description": "Reglas para UI usando Ionic React Components.",
+  "rules": [
+    "Usa componentes Ionic: IonPage, IonHeader, IonContent, IonButton, IonCard.",
+    "Divide UI en: pages/ (pantallas completas), components/ (reutilizables).",
+    "Aplica tema personalizado en src/theme/variables.css con CSS custom properties.",
+    "Usa Ionic color variants: --ion-color-primary, --ion-color-secondary.",
+    "Implementa dark mode con @media (prefers-color-scheme: dark).",
+    "Componentes puros: reciben props, no acceden directamente a Firestore.",
+    "Usa IonGrid/IonRow/IonCol para layouts responsive.",
+    "Botones compactos: altura 44px para accesibilidad.",
+    "Calendario: usar FullCalendar con dayGridPlugin.",
+    "Mantener componentes < 200 líneas, extraer subcomponentes si crece.",
+    "Testing: React Testing Library para unit tests."
+  ]
+}
