@@ -82,6 +82,7 @@ export default defineConfig(({ mode }) => {
     }
   },
     server: {
+      host: '0.0.0.0', // Permitir acceso desde otros dispositivos
       port: 3000,
       strictPort: true
     }

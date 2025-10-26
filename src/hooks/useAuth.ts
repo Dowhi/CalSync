@@ -16,13 +16,14 @@ export const useAuth = () => {
   });
 
   useEffect(() => {
-    // Inicializar aplicación sin usuario
+    // Inicializar aplicación sin usuario solo una vez
     console.log('🔄 Iniciando aplicación - Mostrando selector de usuario');
-    setAuthState({
+    setAuthState(prevState => ({
+      ...prevState,
       user: null,
       isLoading: false,
       isAuthenticated: false
-    });
+    }));
   }, []);
 
   const selectUser = async (user: User) => {
