@@ -12,21 +12,28 @@ export const useEvents = (userId: string | null) => {
 
   useEffect(() => {
     if (!userId) {
+      console.log('🔄 useEvents: No hay userId, limpiando eventos');
       setEvents([]);
       setIsLoading(false);
       return;
     }
 
+    console.log('🔄 useEvents: Iniciando suscripción para userId:', userId);
     setIsLoading(true);
+    setError(null);
     
     // Suscribirse a cambios en tiempo real
     const unsubscribe = eventService.subscribeToEvents((newEvents) => {
+      console.log('📅 useEvents: Eventos recibidos:', newEvents.length);
       setEvents(newEvents);
       setIsLoading(false);
       setError(null);
     });
 
-    return () => unsubscribe();
+    return () => {
+      console.log('🔌 useEvents: Desuscribiendo de eventos');
+      unsubscribe();
+    };
   }, [userId]);
 
   const createEvent = useCallback(

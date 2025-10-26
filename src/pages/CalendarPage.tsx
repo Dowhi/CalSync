@@ -5,15 +5,11 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonFab,
-  IonFabButton,
-  IonIcon,
   IonButtons,
   IonMenuButton,
   IonLoading,
   IonToast
 } from '@ionic/react';
-import { add } from 'ionicons/icons';
 import { CalendarView } from '@/components/calendar/CalendarView';
 import { EventModal } from '@/components/calendar/EventModal';
 import { BottomNavBar } from '@/components/calendar/BottomNavBar';
@@ -45,13 +41,7 @@ export const CalendarPage: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleNewEvent = () => {
-    const now = new Date();
-    const end = new Date(now.getTime() + 60 * 60 * 1000); // +1 hora
-    setSelectedEvent(null);
-    setNewEventDates({ start: now, end });
-    setIsModalOpen(true);
-  };
+  // Función handleNewEvent removida - ahora se crea evento al hacer click en una celda
 
   const handleSaveEvent = async (formData: EventFormData) => {
     try {
@@ -114,11 +104,7 @@ export const CalendarPage: React.FC = () => {
           onDateSelect={handleDateSelect}
         />
 
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton onClick={handleNewEvent}>
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
+        {/* Botón FAB removido - ahora se crea evento al hacer click en una celda */}
 
         <EventModal
           isOpen={isModalOpen}

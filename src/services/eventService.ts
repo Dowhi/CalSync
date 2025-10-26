@@ -92,14 +92,16 @@ class EventService {
    * Suscribirse a cambios en tiempo real de todos los eventos
    */
   subscribeToEvents(callback: (events: CalendarEvent[]) => void): () => void {
+    console.log('🔄 eventService: Iniciando suscripción a eventos');
     const q = query(collection(db, this.collectionName));
 
     const unsubscribe = onSnapshot(
       q,
       (snapshot: QuerySnapshot<DocumentData>) => {
+        console.log('📅 eventService: Snapshot recibido, docs:', snapshot.docs.length);
         const events: CalendarEvent[] = snapshot.docs.map((doc) => {
           const data = doc.data();
-          return {
+          const event = {
             id: doc.id,
             title: data.title,
             start: data.start?.toDate() || new Date(),
@@ -111,12 +113,15 @@ class EventService {
             createdAt: data.createdAt?.toDate() || new Date(),
             updatedAt: data.updatedAt?.toDate() || new Date()
           };
+          console.log('📅 eventService: Evento procesado:', event.title, 'por', event.userName);
+          return event;
         });
 
+        console.log('📅 eventService: Total eventos:', events.length);
         callback(events);
       },
       (error) => {
-        console.error('Error en suscripción a eventos:', error);
+        console.error('❌ eventService: Error en suscripción a eventos:', error);
       }
     );
 
