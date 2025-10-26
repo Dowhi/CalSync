@@ -1,0 +1,170 @@
+.turnos-page-content {
+  --background: #e8e8e8;
+}
+
+.turnos-header {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.turnos-header.expanded {
+  max-height: 200px;
+  padding: 1rem;
+}
+
+.turnos-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.action-btn {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  --border-radius: 8px;
+  height: 44px;
+}
+
+.create-btn {
+  --background: #5a6268;
+  --background-hover: #4a525a;
+  --background-activated: #3a424a;
+}
+
+.import-btn {
+  --color: white;
+  --border-color: white;
+  --border-width: 2px;
+}
+
+.turnos-list {
+  background: transparent;
+  padding: 0.5rem;
+}
+
+.turno-item {
+  --background: #f8f9fa;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --inner-padding-end: 0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.turno-badge {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  word-break: break-word;
+  padding: 0.25rem;
+}
+
+.turno-info {
+  flex: 1;
+}
+
+.turno-nombre {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.25rem 0;
+}
+
+.turno-horario {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.turno-item ion-button {
+  margin: 0;
+  --padding-start: 0.5rem;
+  --padding-end: 0.5rem;
+}
+
+.turno-item ion-icon {
+  font-size: 24px;
+  color: #95a5a6;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.empty-state ion-button {
+  --background: #5a6268;
+  --background-hover: #4a525a;
+  margin: 0;
+}
+
+.turno-config-modal {
+  --height: 100%;
+  --width: 100%;
+}
+
+/* Animación para items de la lista */
+.turno-item {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .turnos-actions {
+    flex-direction: row;
+  }
+  
+  .action-btn {
+    flex: 1;
+  }
+
+  .turnos-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+

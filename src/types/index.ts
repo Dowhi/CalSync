@@ -42,3 +42,28 @@ export interface EventFormData {
   category: EventCategory;
 }
 
+// Tipos para Turnos
+export interface Turno {
+  id: string;
+  nombre: string;
+  abreviatura: string;
+  colorFondo: string;
+  colorTexto: string;
+  tamañoTexto: number;
+  horarioInicio?: string; // Formato "HH:mm"
+  horarioFin?: string; // Formato "HH:mm"
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}
+
+export interface TurnoFormData {
+  nombre: string;
+  abreviatura: string;
+  colorFondo: string;
+  colorTexto: string;
+  tamañoTexto: number;
+  horarioInicio?: string;
+  horarioFin?: string;
+}
+
+

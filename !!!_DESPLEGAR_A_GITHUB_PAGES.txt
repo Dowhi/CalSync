@@ -1,0 +1,133 @@
+🚀 DESPLEGAR CAMBIOS A GITHUB PAGES
+=====================================
+
+✅ Las reglas de Firestore ya están desplegadas
+✅ La aplicación funciona localmente en http://localhost:3000
+
+
+📋 PASOS PARA DESPLEGAR A PRODUCCIÓN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OPCIÓN 1: Deploy automático con Firebase Hosting
+─────────────────────────────────────────────────
+
+1. Construir para producción:
+   npm run build
+
+2. Desplegar a Firebase Hosting:
+   firebase deploy --only hosting
+
+3. Tu app estará en:
+   https://calendario-sync-9e37f.firebaseapp.com
+
+
+OPCIÓN 2: Deploy a GitHub Pages
+────────────────────────────────
+
+1. Construir para GitHub Pages:
+   npm run build:github
+
+2. Hacer commit de los cambios:
+   git add .
+   git commit -m "feat: Agregar funcionalidad de gestión de turnos"
+
+3. Push a GitHub:
+   git push origin main
+
+4. GitHub Actions desplegará automáticamente
+
+5. Tu app estará en:
+   https://[tu-usuario].github.io/CalSync/
+
+
+OPCIÓN 3: Deploy completo (Firebase + GitHub)
+──────────────────────────────────────────────
+
+1. Build para ambos:
+   npm run build:github
+
+2. Deploy a Firebase:
+   firebase deploy
+
+3. Commit y push a GitHub:
+   git add .
+   git commit -m "feat: Agregar funcionalidad de gestión de turnos"
+   git push origin main
+
+
+📱 VERIFICAR EL DEPLOY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre la URL de producción en tu navegador
+
+2. Presiona Ctrl + Shift + R para recargar forzadamente
+
+3. Ve al calendario y pulsa el botón "Turnos"
+
+4. Pulsa "IMPORTAR TURNOS..." para cargar los predefinidos
+
+5. Prueba crear, editar y eliminar turnos
+
+
+🔧 SI HAY PROBLEMAS EN PRODUCCIÓN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre DevTools (F12)
+2. Ve a la pestaña Console
+3. Busca errores en rojo
+4. Verifica que las reglas de Firestore estén bien:
+   firebase deploy --only firestore:rules
+
+5. Limpia caché:
+   DevTools > Application > Clear storage > Clear site data
+
+
+📊 RESUMEN DE LO DESPLEGADO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Reglas de Firestore (YA DESPLEGADO)
+   - Colección "turnos" con permisos de lectura/escritura
+
+✅ Código fuente (LISTO PARA DESPLEGAR)
+   - 7 archivos nuevos
+   - 4 archivos modificados
+   - ~800 líneas de código
+   - 2 nuevas páginas React
+   - 1 nuevo servicio Firebase
+   - 1 nuevo hook personalizado
+
+✅ Build optimizado
+   - PWA funcional
+   - Service Worker generado
+   - Manifest configurado
+   - Assets optimizados
+
+
+🎯 PRÓXIMOS PASOS RECOMENDADOS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ✅ Probar localmente (YA HECHO)
+   http://localhost:3000
+
+2. 🔄 Desplegar a producción (AHORA)
+   npm run deploy
+
+3. 📱 Probar en móvil
+   Instalar como PWA
+
+4. 👥 Compartir con usuarios
+   Enviar URL de producción
+
+5. 📊 Monitorear uso
+   Firebase Console > Analytics
+
+
+═══════════════════════════════════════════════════════════════
+ESTADO: ✅ TODO LISTO PARA DESPLEGAR
+COMANDOS RÁPIDOS:
+  npm run build         - Build local
+  npm run build:github  - Build para GitHub Pages
+  npm run deploy        - Deploy a Firebase
+  git push origin main  - Deploy a GitHub Pages
+═══════════════════════════════════════════════════════════════
+

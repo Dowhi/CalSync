@@ -1,0 +1,138 @@
+🔍 DIAGNÓSTICO: NO SE VE EL SELECTOR DE USUARIO
+===============================================
+
+❌ PROBLEMA: No aparece la pantalla de selección de usuario
+
+✅ SERVIDOR VERIFICADO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Servidor corriendo en puerto 3000
+✅ Build exitoso sin errores
+✅ Aplicación accesible en: http://localhost:3000
+
+
+🔧 PASOS DE DIAGNÓSTICO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: Verificar en el navegador
+1. Abre: http://localhost:3000
+2. Presiona F12 para abrir DevTools
+3. Ve a la pestaña "Console"
+4. Busca mensajes de error en rojo
+5. Busca mensajes que empiecen con:
+   - 🚀 App renderizado
+   - 🔄 Iniciando aplicación
+   - 🎨 UserSelector renderizado
+
+PASO 2: Verificar la consola de PowerShell
+1. Mira la terminal donde corre "npm run dev"
+2. Busca mensajes de error
+3. Deberías ver algo como:
+   - "Local: http://localhost:3000/"
+   - "ready in XXXms"
+
+PASO 3: Recarga forzada
+1. Presiona: Ctrl + Shift + R
+2. O abre ventana de incógnito: Ctrl + Shift + N
+3. Navega a: http://localhost:3000
+
+PASO 4: Verificar la red
+1. En DevTools, ve a "Network"
+2. Recarga la página
+3. Verifica que se cargan todos los archivos
+4. Busca errores 404 o 500
+
+
+🐛 ERRORES COMUNES Y SOLUCIONES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ERROR: "Cannot resolve module"
+SOLUCIÓN: Problema con imports, ejecutar:
+  npm install
+  npm run build
+
+ERROR: "Firebase: Permission denied"
+SOLUCIÓN: Las reglas de Firestore, ejecutar:
+  firebase deploy --only firestore:rules
+
+ERROR: "Module not found: @/components/user/UserSelector"
+SOLUCIÓN: Problema con alias de path, verificar vite.config.ts
+
+ERROR: "Cannot read property 'map' of undefined"
+SOLUCIÓN: PREDEFINED_USERS no se está cargando
+
+ERROR: "Loading..." infinito
+SOLUCIÓN: El hook useAuth no está funcionando correctamente
+
+
+🔧 COMANDOS DE SOLUCIÓN RÁPIDA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Detener servidor:
+   Get-Process -Name node | Stop-Process -Force
+
+2. Limpiar todo:
+   Remove-Item -Recurse -Force dist, node_modules
+   npm install
+
+3. Compilar:
+   npm run build
+
+4. Iniciar:
+   npm run dev
+
+5. Abrir:
+   http://localhost:3000
+
+
+📱 PRUEBA EN OTROS NAVEGADORES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si no funciona en un navegador, prueba en:
+- Chrome: http://localhost:3000
+- Firefox: http://localhost:3000
+- Edge: http://localhost:3000
+- Safari: http://localhost:3000
+
+
+🔍 VERIFICACIÓN MANUAL DEL CÓDIGO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre: src/App.tsx
+2. Verifica que tiene:
+   - import { UserSelector } from '@/components/user/UserSelector';
+   - import { useAuth } from '@/hooks/useAuth';
+   - if (!isAuthenticated) return <UserSelector onSelectUser={selectUser} />;
+
+3. Abre: src/hooks/useAuth.ts
+4. Verifica que tiene:
+   - setAuthState({ user: null, isLoading: false, isAuthenticated: false });
+
+5. Abre: src/components/user/UserSelector.tsx
+6. Verifica que tiene:
+   - import { PREDEFINED_USERS } from '@/utils/constants';
+   - {PREDEFINED_USERS.map((user) => ...)}
+
+
+📊 INFORMACIÓN PARA AYUDA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si necesitas ayuda adicional, comparte:
+
+1. Mensajes de la consola del navegador (F12 > Console)
+2. Mensajes de la consola de PowerShell (donde corre npm run dev)
+3. Qué ves exactamente en la pantalla (blanco, error, loading infinito)
+4. Qué navegador estás usando
+5. Si funciona en otros navegadores
+
+
+═══════════════════════════════════════════════════════════════
+
+🎯 ESTADO ACTUAL:
+✅ Servidor: http://localhost:3000 (corriendo)
+✅ Build: Exitoso
+✅ Código: Verificado
+
+👉 PRÓXIMO PASO: Abre http://localhost:3000 y revisa la consola (F12)
+
+═══════════════════════════════════════════════════════════════
+

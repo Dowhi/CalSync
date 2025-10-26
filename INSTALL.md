@@ -306,3 +306,4 @@ Tu instalación de CalSync está completa. Ahora puedes:
 3. Configura notificaciones push (opcional)
 4. Implementa backup automático (opcional)
 
+

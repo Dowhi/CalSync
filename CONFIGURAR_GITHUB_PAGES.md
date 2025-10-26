@@ -202,3 +202,4 @@ Una vez configurado Pages con "GitHub Actions":
 
 **Siguiente paso**: Ve a https://github.com/Dowhi/CalSync/settings/pages y configura "GitHub Actions"
 
+

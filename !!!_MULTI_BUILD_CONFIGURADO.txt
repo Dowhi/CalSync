@@ -82,3 +82,4 @@ PARA ANDROID/SAFARI:
 ✅ Chrome/Firefox: Como PWA o web normal
 
 ═══════════════════════════════════════════════════════════════════════════════
+

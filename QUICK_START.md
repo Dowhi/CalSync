@@ -117,3 +117,4 @@ Ya tienes CalSync funcionando. Ahora puedes:
 
 **¿Necesitas ayuda?** Abre un issue en el repositorio o consulta la documentación completa.
 
+

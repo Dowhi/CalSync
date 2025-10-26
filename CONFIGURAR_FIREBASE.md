@@ -266,3 +266,4 @@ Una vez configurado Firebase, tu app CalSync estará **100% funcional**:
 
 **¿Necesitas ayuda?** Avísame y te guío paso a paso.
 
+

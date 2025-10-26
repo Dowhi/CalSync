@@ -245,3 +245,4 @@ En `src/utils/constants.ts`:
 **Última actualización**: Octubre 2025
 **Versión**: 1.0.0
 
+

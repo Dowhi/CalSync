@@ -250,3 +250,4 @@ Todos los colaboradores serán agregados al README.
 
 ¡Gracias por contribuir a CalSync! 🙌
 
+

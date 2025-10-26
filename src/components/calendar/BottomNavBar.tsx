@@ -1,4 +1,5 @@
 import { IonButton, IonButtons } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import './BottomNavBar.css';
 
 interface BottomNavBarProps {
@@ -12,6 +13,15 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
   onEditar,
   onTurnos
 }) => {
+  const history = useHistory();
+
+  const handleTurnosClick = () => {
+    if (onTurnos) {
+      onTurnos();
+    }
+    history.push('/turnos');
+  };
+
   return (
     <div className="bottom-nav-bar">
       <IonButtons>
@@ -21,10 +31,11 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         <IonButton className="nav-button" onClick={onEditar}>
           Editar
         </IonButton>
-        <IonButton className="nav-button" onClick={onTurnos}>
+        <IonButton className="nav-button" onClick={handleTurnosClick}>
           Turnos
         </IonButton>
       </IonButtons>
     </div>
   );
 };
+

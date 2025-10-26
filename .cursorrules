@@ -72,3 +72,4 @@ Calendario compartido PWA para gestión de turnos y eventos. Tech stack: React, 
 - Usuarios se seleccionan de lista fija
 - Base path: `/CalSync/` para GitHub Pages
 - Deploy automático con GitHub Actions
+

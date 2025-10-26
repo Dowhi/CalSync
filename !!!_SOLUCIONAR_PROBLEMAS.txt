@@ -1,0 +1,128 @@
+🔧 SOLUCIÓN DE PROBLEMAS - CalSync Turnos
+==========================================
+
+❌ PROBLEMA: No veo los cambios / La app no funciona
+
+✅ SOLUCIONES:
+
+1. RECARGA FORZADA DEL NAVEGADOR
+   - Chrome/Edge: Ctrl + Shift + R
+   - Firefox: Ctrl + F5
+   - Safari: Cmd + Shift + R
+
+2. LIMPIAR CACHÉ Y STORAGE
+   - Abre DevTools (F12)
+   - Ve a Application > Storage
+   - Click en "Clear site data"
+   - Recarga la página
+
+3. VENTANA DE INCÓGNITO
+   - Chrome/Edge: Ctrl + Shift + N
+   - Firefox: Ctrl + Shift + P
+   - Navega a http://localhost:3000
+
+4. REINICIAR SERVIDOR
+   En PowerShell:
+   ```
+   # Detener servidor
+   Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
+   
+   # Limpiar y reconstruir
+   npm run build
+   
+   # Iniciar servidor
+   npm run dev
+   ```
+
+5. VERIFICAR QUE EL SERVIDOR ESTÁ CORRIENDO
+   ```
+   netstat -ano | findstr :3000
+   ```
+   Debe aparecer: TCP [::1]:3000 LISTENING
+
+6. VERIFICAR EN OTROS NAVEGADORES
+   - Chrome: http://localhost:3000
+   - Firefox: http://localhost:3000
+   - Edge: http://localhost:3000
+
+❌ PROBLEMA: Error de Firebase / No se guardan los turnos
+
+✅ SOLUCIONES:
+
+1. Verifica la consola del navegador (F12)
+   - Busca errores en rojo
+   - Copia y revisa el mensaje
+
+2. Verifica las reglas de Firestore
+   ```
+   firebase deploy --only firestore:rules
+   ```
+
+3. Verifica la configuración de Firebase
+   - Archivo: src/config/firebase.prod.ts
+   - Debe tener tu configuración correcta
+
+❌ PROBLEMA: La página de Turnos aparece en blanco
+
+✅ SOLUCIONES:
+
+1. Abre DevTools (F12) y ve a la pestaña Console
+2. Busca errores JavaScript
+3. Si hay error de módulo no encontrado:
+   ```
+   npm install
+   npm run build
+   npm run dev
+   ```
+
+❌ PROBLEMA: El botón "Turnos" no hace nada
+
+✅ SOLUCIONES:
+
+1. Verifica que estás en la página del calendario (/)
+2. Abre DevTools y verifica errores
+3. Prueba refrescando con Ctrl + Shift + R
+
+📱 PARA PROBAR EN MÓVIL (MISMA RED WiFi):
+
+1. Encuentra tu IP local:
+   ```
+   ipconfig
+   ```
+   Busca "Dirección IPv4" (ej: 192.168.1.100)
+
+2. En el móvil abre:
+   http://[TU_IP]:3000
+   (ej: http://192.168.1.100:3000)
+
+3. Si no funciona, en vite.config.ts agrega:
+   ```
+   server: {
+     host: '0.0.0.0',
+     port: 3000
+   }
+   ```
+
+🆘 SI NADA FUNCIONA:
+
+1. Limpieza completa:
+   ```
+   npm run clean
+   npm install
+   npm run build
+   npm run dev
+   ```
+
+2. O manualmente:
+   ```
+   Remove-Item -Recurse -Force node_modules, dist
+   npm install
+   npm run build
+   npm run dev
+   ```
+
+📧 CONTACTO / AYUDA:
+- Revisa la consola del navegador (F12)
+- Revisa la consola de PowerShell donde corre npm run dev
+- Copia cualquier error que aparezca
+

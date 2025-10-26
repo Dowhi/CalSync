@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { User, AuthState } from '@/types';
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 
 const CURRENT_USER_KEY = 'current_selected_user';
@@ -16,48 +16,13 @@ export const useAuth = () => {
   });
 
   useEffect(() => {
-    // Cargar usuario desde Firebase con timeout
-    const loadUser = async () => {
-      try {
-        console.log('🔄 Intentando cargar usuario desde Firebase...');
-        
-        // Timeout de 5 segundos para evitar espera infinita
-        const timeoutPromise = new Promise((_, reject) => 
-          setTimeout(() => reject(new Error('Timeout')), 5000)
-        );
-        
-        const userDocPromise = getDoc(doc(db, 'config', CURRENT_USER_KEY));
-        
-        const userDoc = await Promise.race([userDocPromise, timeoutPromise]) as any;
-        
-        if (userDoc.exists && userDoc.exists()) {
-          const userData = userDoc.data() as User;
-          console.log('✅ Usuario encontrado en Firebase:', userData);
-          setAuthState({
-            user: userData,
-            isLoading: false,
-            isAuthenticated: true
-          });
-        } else {
-          console.log('ℹ️ No hay usuario guardado en Firebase');
-          setAuthState({
-            user: null,
-            isLoading: false,
-            isAuthenticated: false
-          });
-        }
-      } catch (error) {
-        console.error('❌ Error al cargar usuario desde Firebase:', error);
-        console.log('⚠️ Continuando sin usuario guardado');
-        setAuthState({
-          user: null,
-          isLoading: false,
-          isAuthenticated: false
-        });
-      }
-    };
-
-    loadUser();
+    // Inicializar aplicación sin usuario
+    console.log('🔄 Iniciando aplicación - Mostrando selector de usuario');
+    setAuthState({
+      user: null,
+      isLoading: false,
+      isAuthenticated: false
+    });
   }, []);
 
   const selectUser = async (user: User) => {

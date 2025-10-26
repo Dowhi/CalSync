@@ -116,3 +116,4 @@ Luego ejecutar: `npm run icons`
 
 **Nota**: Los iconos son esenciales para que la PWA sea instalable. Sin ellos, la aplicación funcionará en el navegador pero no se podrá instalar en el dispositivo.
 
+

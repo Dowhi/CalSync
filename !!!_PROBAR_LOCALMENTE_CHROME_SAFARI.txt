@@ -77,3 +77,4 @@ Para desarrollo: Usa npm run dev (más rápido, recarga automática)
 Para producción: Espera a que GitHub Pages despliegue (1-2 minutos)
 
 ═══════════════════════════════════════════════════════════════════════════════
+

@@ -202,3 +202,4 @@ Si quieres USAR la app completamente (crear eventos):
 
 Ahora tu app cargará correctamente en GitHub Pages.
 
+

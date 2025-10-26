@@ -2,6 +2,7 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { IonReactRouter } from '@ionic/react-router';
 import { Route, Redirect } from 'react-router-dom';
 import { CalendarPage } from '@/pages/CalendarPage';
+import { TurnosPage } from '@/pages/TurnosPage';
 import { Menu } from '@/components/layout/Menu';
 import { UserSelector } from '@/components/user/UserSelector';
 import { useAuth } from '@/hooks/useAuth';
@@ -71,6 +72,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main-content">
             <Route exact path="/calendar" component={CalendarPage} />
+            <Route exact path="/turnos" component={TurnosPage} />
             <Route exact path="/">
               <Redirect to="/calendar" />
             </Route>

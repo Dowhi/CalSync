@@ -1,0 +1,142 @@
+🔍 DIAGNÓSTICO: PANTALLA EN BLANCO DESPUÉS DE SELECCIONAR USUARIO
+================================================================
+
+❌ PROBLEMA IDENTIFICADO Y CORREGIDO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+El problema era que el hook useAuth estaba limpiando automáticamente 
+el usuario guardado cada vez que se inicializaba la aplicación, lo que 
+causaba que después de seleccionar un usuario, se guardara en Firebase 
+pero inmediatamente se limpiara en el siguiente render.
+
+✅ CORRECCIÓN APLICADA:
+- Eliminé la limpieza automática del usuario guardado
+- Ahora solo inicializa sin usuario al arrancar
+- Una vez seleccionado, el usuario se mantiene durante la sesión
+
+
+🚀 CÓMO PROBAR AHORA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre: http://localhost:3000
+2. Verás el selector de usuario
+3. Selecciona cualquier usuario
+4. Deberías ver el calendario correctamente
+5. Prueba la funcionalidad de turnos
+
+
+🔧 SI AÚN VES PANTALLA EN BLANCO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: Abre DevTools (F12)
+- Ve a la pestaña "Console"
+- Busca errores en rojo
+- Copia cualquier mensaje de error
+
+PASO 2: Verifica la consola de PowerShell
+- Mira la terminal donde corre "npm run dev"
+- Busca mensajes de error
+
+PASO 3: Recarga forzada
+- Presiona: Ctrl + Shift + R
+- O abre ventana de incógnito: Ctrl + Shift + N
+
+PASO 4: Verifica la red
+- En DevTools, ve a "Network"
+- Recarga la página
+- Verifica que no hay errores 404 o 500
+
+
+🐛 ERRORES COMUNES Y SOLUCIONES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ERROR: "Cannot read property 'uid' of null"
+SOLUCIÓN: El usuario no se está guardando correctamente
+
+ERROR: "Firebase: Permission denied"
+SOLUCIÓN: Las reglas de Firestore no están bien configuradas
+
+ERROR: "Module not found"
+SOLUCIÓN: Hay un problema con los imports
+
+ERROR: "Cannot read property 'map' of undefined"
+SOLUCIÓN: Los datos no se están cargando correctamente
+
+
+📊 VERIFICACIÓN RÁPIDA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ¿Ves el selector de usuario al abrir la app?
+   ✅ SÍ → Continúa al paso 2
+   ❌ NO → Recarga forzada (Ctrl + Shift + R)
+
+2. ¿Desaparece el selector al seleccionar un usuario?
+   ✅ SÍ → Continúa al paso 3
+   ❌ NO → Hay un error en la selección
+
+3. ¿Aparece el calendario después de seleccionar?
+   ✅ SÍ → ¡Todo funciona!
+   ❌ NO → Revisa la consola del navegador (F12)
+
+4. ¿Ves errores en la consola del navegador?
+   ✅ SÍ → Copia el error y compártelo
+   ❌ NO → El problema puede ser de CSS o renderizado
+
+
+🔧 COMANDOS DE DIAGNÓSTICO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si quieres hacer un diagnóstico completo:
+
+1. Detener servidor:
+   Get-Process -Name node | Stop-Process -Force
+
+2. Limpiar caché:
+   Remove-Item -Recurse -Force dist
+
+3. Reinstalar:
+   npm install
+
+4. Compilar:
+   npm run build
+
+5. Iniciar:
+   npm run dev
+
+6. Abrir:
+   http://localhost:3000
+
+
+📱 PRUEBA EN OTRO NAVEGADOR:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si sigue sin funcionar, prueba en:
+- Chrome: http://localhost:3000
+- Firefox: http://localhost:3000
+- Edge: http://localhost:3000
+- Ventana de incógnito en cualquiera
+
+
+📞 INFORMACIÓN PARA AYUDA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si necesitas ayuda adicional, comparte:
+
+1. Mensajes de la consola del navegador (F12 > Console)
+2. Mensajes de la consola de PowerShell (donde corre npm run dev)
+3. Qué navegador estás usando
+4. Qué ves exactamente (pantalla blanca, error, etc.)
+
+
+═══════════════════════════════════════════════════════════════
+
+🎯 ESTADO ACTUAL:
+✅ Servidor corriendo: http://localhost:3000
+✅ Corrección aplicada: Hook useAuth corregido
+✅ Build exitoso: Sin errores
+✅ Problema identificado: Limpieza automática del usuario
+
+👉 PRUEBA AHORA: http://localhost:3000
+
+═══════════════════════════════════════════════════════════════
+

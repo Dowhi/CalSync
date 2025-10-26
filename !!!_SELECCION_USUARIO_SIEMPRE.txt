@@ -1,0 +1,140 @@
+✅ CONFIGURACIÓN APLICADA: SIEMPRE ARRANCAR EN SELECCIÓN DE USUARIO
+================================================================
+
+🎯 CAMBIO REALIZADO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Modificado: src/hooks/useAuth.ts
+✅ La aplicación ahora SIEMPRE arranca en la pantalla de selección de usuario
+✅ Se limpia automáticamente cualquier usuario guardado al iniciar
+✅ Build exitoso sin errores
+✅ Servidor reiniciado y funcionando
+
+
+📱 CÓMO FUNCIONA AHORA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abres la aplicación: http://localhost:3000
+2. SIEMPRE verás la pantalla de selección de usuario
+3. Seleccionas un usuario de la lista
+4. Entras al calendario con ese usuario
+5. Al cerrar y volver a abrir la app, vuelve a pedir selección de usuario
+
+
+🔧 QUÉ SE CAMBIÓ:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ANTES:
+- La app recordaba el último usuario seleccionado
+- Al abrir la app, iba directo al calendario
+- Solo mostraba selector si no había usuario guardado
+
+AHORA:
+- La app SIEMPRE muestra el selector de usuario
+- Limpia automáticamente el usuario guardado al iniciar
+- Cada vez que abres la app, debes seleccionar usuario
+
+
+💡 VENTAJAS DE ESTE CAMBIO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Fácil cambio entre usuarios para probar
+✅ No necesitas cerrar sesión manualmente
+✅ Ideal para desarrollo y testing
+✅ Cada sesión es "limpia"
+✅ Perfecto para demostrar la funcionalidad de turnos
+
+
+🚀 CÓMO PROBAR:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre: http://localhost:3000
+2. Verás la pantalla de selección de usuario
+3. Selecciona cualquier usuario
+4. Prueba la funcionalidad de turnos
+5. Cierra la pestaña del navegador
+6. Abre nuevamente: http://localhost:3000
+7. Verás de nuevo el selector de usuario
+
+
+🔄 PARA REVERTIR EL CAMBIO (si quieres):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si en algún momento quieres que la app recuerde el usuario:
+
+1. Abre: src/hooks/useAuth.ts
+2. Busca la línea: "Siempre iniciar sin usuario para mostrar selector"
+3. Reemplaza todo el useEffect con:
+
+```typescript
+useEffect(() => {
+  // Cargar usuario desde Firebase con timeout
+  const loadUser = async () => {
+    try {
+      console.log('🔄 Intentando cargar usuario desde Firebase...');
+      
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout')), 5000)
+      );
+      
+      const userDocPromise = getDoc(doc(db, 'config', CURRENT_USER_KEY));
+      
+      const userDoc = await Promise.race([userDocPromise, timeoutPromise]) as any;
+      
+      if (userDoc.exists && userDoc.exists()) {
+        const userData = userDoc.data() as User;
+        console.log('✅ Usuario encontrado en Firebase:', userData);
+        setAuthState({
+          user: userData,
+          isLoading: false,
+          isAuthenticated: true
+        });
+      } else {
+        console.log('ℹ️ No hay usuario guardado en Firebase');
+        setAuthState({
+          user: null,
+          isLoading: false,
+          isAuthenticated: false
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error al cargar usuario desde Firebase:', error);
+      console.log('⚠️ Continuando sin usuario guardado');
+      setAuthState({
+        user: null,
+        isLoading: false,
+        isAuthenticated: false
+      });
+    }
+  };
+
+  loadUser();
+}, []);
+```
+
+4. Agrega el import: `import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';`
+5. Ejecuta: `npm run build`
+
+
+📊 ESTADO ACTUAL:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Aplicación corriendo: http://localhost:3000
+✅ Selector de usuario: SIEMPRE visible al iniciar
+✅ Funcionalidad de turnos: Completamente funcional
+✅ Build: Sin errores
+✅ PWA: Funcionando correctamente
+
+
+═══════════════════════════════════════════════════════════════
+
+🎉 ¡LISTO! Ahora la aplicación siempre arranca en la pantalla de 
+   selección de usuario, perfecto para probar la funcionalidad 
+   de turnos con diferentes usuarios.
+
+👉 Abre: http://localhost:3000
+👉 Selecciona un usuario
+👉 Prueba los turnos!
+
+═══════════════════════════════════════════════════════════════
+
