@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { User, AuthState } from '@/types';
-import { doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { doc, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 
 const CURRENT_USER_KEY = 'current_selected_user';
@@ -16,14 +16,40 @@ export const useAuth = () => {
   });
 
   useEffect(() => {
-    // Inicializar aplicación sin usuario solo una vez
-    console.log('🔄 Iniciando aplicación - Mostrando selector de usuario');
-    setAuthState(prevState => ({
-      ...prevState,
-      user: null,
-      isLoading: false,
-      isAuthenticated: false
-    }));
+    const initializeApp = async () => {
+      try {
+        console.log('🔄 Iniciando aplicación - Verificando usuario guardado');
+        
+        // Intentar cargar usuario guardado
+        const userDoc = await getDoc(doc(db, 'config', CURRENT_USER_KEY));
+        
+        if (userDoc.exists()) {
+          const userData = userDoc.data() as User;
+          console.log('✅ Usuario encontrado:', userData.displayName);
+          setAuthState({
+            user: userData,
+            isLoading: false,
+            isAuthenticated: true
+          });
+        } else {
+          console.log('ℹ️ No hay usuario guardado - Mostrando selector');
+          setAuthState({
+            user: null,
+            isLoading: false,
+            isAuthenticated: false
+          });
+        }
+      } catch (error) {
+        console.error('❌ Error al cargar usuario:', error);
+        setAuthState({
+          user: null,
+          isLoading: false,
+          isAuthenticated: false
+        });
+      }
+    };
+
+    initializeApp();
   }, []);
 
   const selectUser = async (user: User) => {

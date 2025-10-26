@@ -20,6 +20,10 @@ import './CalendarPage.css';
 
 export const CalendarPage: React.FC = () => {
   const { user } = useAuth();
+  
+  console.log('📅 CalendarPage: user:', user);
+  console.log('📅 CalendarPage: user?.uid:', user?.uid);
+  
   const { events, isLoading, error, createEvent, updateEvent, deleteEvent, canEditEvent } =
     useEvents(user?.uid || null);
 

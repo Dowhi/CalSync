@@ -1,0 +1,104 @@
+🔍 DEBUGGING: EVENTOS NO SE CARGAN
+====================================
+
+❌ PROBLEMA IDENTIFICADO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+En la consola se ve:
+- Hook useAuth reiniciando constantemente
+- Error 404 en recursos
+- URL incorrecta: dowhi.github.io/calendar (falta la "S")
+- Evento en día 25 no se muestra
+
+✅ CORRECCIONES APLICADAS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ✅ Hook useAuth corregido
+   - Eliminado el reinicio constante
+   - Estado se mantiene estable
+
+2. ✅ Logging detallado agregado
+   - useEvents: Muestra cuántos eventos se cargan
+   - eventService: Muestra eventos procesados
+   - CalendarView: Muestra eventos recibidos
+
+3. ✅ Desplegado a Firebase Hosting
+   - URL correcta: https://calendario-sync-9e37f.web.app
+
+🔍 CÓMO DEBUGGEAR:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre: https://calendario-sync-9e37f.web.app
+2. Abre DevTools (F12)
+3. Ve a la pestaña "Console"
+4. Busca estos mensajes:
+
+✅ MENSAJES ESPERADOS:
+- 🔄 useEvents: Iniciando suscripción para userId: [ID]
+- 📅 eventService: Snapshot recibido, docs: [NÚMERO]
+- 📅 eventService: Evento procesado: [TÍTULO] por [USUARIO]
+- 📅 useEvents: Eventos recibidos: [NÚMERO]
+- 📅 CalendarView: Eventos recibidos: [NÚMERO]
+- 📅 CalendarView: Eventos: [ARRAY DE EVENTOS]
+
+❌ ERRORES A BUSCAR:
+- Error 404: Recurso no encontrado
+- Error de Firebase: Conexión fallida
+- Error de permisos: Firestore rules
+
+🔧 SOLUCIONES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SI NO VES EVENTOS:
+1. Verifica que aparezcan los mensajes de logging
+2. Si no aparecen, hay problema de conexión a Firebase
+3. Si aparecen pero no se muestran, hay problema de renderizado
+
+SI HAY ERROR 404:
+1. Verifica que estés en la URL correcta
+2. Limpia la caché del navegador (Ctrl + Shift + R)
+3. Prueba en ventana de incógnito
+
+SI HAY ERROR DE FIREBASE:
+1. Verifica las reglas de Firestore
+2. Comprueba la configuración de Firebase
+3. Revisa la consola de Firebase
+
+📊 ESTADO ACTUAL:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Firebase Hosting: https://calendario-sync-9e37f.web.app
+✅ Logging detallado: Agregado
+✅ Hook useAuth: Corregido
+✅ Build: Exitoso
+
+🎯 PRÓXIMOS PASOS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre la aplicación en: https://calendario-sync-9e37f.web.app
+2. Abre DevTools (F12)
+3. Selecciona un usuario
+4. Revisa la consola para ver los mensajes de logging
+5. Si ves eventos en la consola pero no en el calendario, hay problema de renderizado
+6. Si no ves eventos en la consola, hay problema de Firebase
+
+🔗 ENLACES ÚTILES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 Aplicación: https://calendario-sync-9e37f.web.app
+📊 Firebase Console: https://console.firebase.google.com/project/calendario-sync-9e37f/overview
+🔥 Firestore: https://console.firebase.google.com/project/calendario-sync-9e37f/firestore
+
+═══════════════════════════════════════════════════════════════
+
+🎯 PRUEBA AHORA:
+
+👉 Abre: https://calendario-sync-9e37f.web.app
+👉 Abre DevTools (F12)
+👉 Selecciona un usuario
+👉 Revisa la consola para ver los mensajes de logging
+
+Si ves eventos en la consola pero no en el calendario, 
+comparte los mensajes de la consola para diagnosticar.
+
+═══════════════════════════════════════════════════════════════

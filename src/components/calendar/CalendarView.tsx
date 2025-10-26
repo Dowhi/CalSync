@@ -25,18 +25,27 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 }) => {
   const calendarRef = useRef<FullCalendar>(null);
 
+  console.log('📅 CalendarView: Eventos recibidos:', events.length);
+  console.log('📅 CalendarView: Eventos:', events);
+  console.log('📅 CalendarView: currentUserId:', currentUserId);
+
   // Convertir eventos al formato de FullCalendar
-  const calendarEvents = events.map((event) => ({
-    id: event.id,
-    title: event.title,
-    start: event.start,
-    end: event.end,
-    backgroundColor: event.userId === currentUserId ? EVENT_COLORS.own : EVENT_COLORS.others,
-    borderColor: event.userId === currentUserId ? EVENT_COLORS.own : EVENT_COLORS.others,
-    extendedProps: {
-      ...event
-    }
-  }));
+  const calendarEvents = events.map((event) => {
+    console.log('📅 CalendarView: Procesando evento:', event.title, 'para usuario:', event.userId);
+    return {
+      id: event.id,
+      title: event.title,
+      start: event.start,
+      end: event.end,
+      backgroundColor: event.userId === currentUserId ? EVENT_COLORS.own : EVENT_COLORS.others,
+      borderColor: event.userId === currentUserId ? EVENT_COLORS.own : EVENT_COLORS.others,
+      extendedProps: {
+        ...event
+      }
+    };
+  });
+
+  console.log('📅 CalendarView: Eventos convertidos para FullCalendar:', calendarEvents.length);
 
   const handleEventClick = (clickInfo: EventClickArg) => {
     const event = clickInfo.event.extendedProps as CalendarEvent;
